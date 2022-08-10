@@ -4,4 +4,15 @@ html
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    - var isMaso = true
+    if author== 'bahomoddah'
+      p by bahomoddah
+    if isMaso
+      p by Maso
+    ul 
+      li jade way
+    - var names = ['Ali', 'Ahmed']
+    for value in names
+      p= value
+    input(type="text").className#anID
     block content
