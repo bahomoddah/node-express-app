@@ -1,16 +1,28 @@
 <h3>SignUp Page {{title}} </h3>
+{{#if success }}
+    <p>nice</p>
+
+{{else}}
+  {{#if errors}}
+  <ul>
+    {{# each errors }}
+    <li>{{ this.msg }}</li>
+    {{/each}}
+  </ul>
+  {{/if}}
 <form action="/auth/register" method="post">
-<div>
-  <label for="email">E-mail</label>
-  <input type="email" name="email" id="email" />
-</div>
-<div>
-  <label for="password">Password</label>
-  <input type="password" name="password" id="password" />
-</div>
-<div>
-  <label for="confirmPassword">Confirm Password</label>
-  <input type="password" name="confirmPassword" id="confirmPassword" />
-</div>
+  <div>
+    <label for="email">E-mail</label>
+    <input type="email" name="email" id="email" />
+  </div>
+  <div>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" />
+  </div>
+  <div>
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" name="confirmPassword" id="confirmPassword" />
+  </div>
   <button type="submit">Sign up</button>
 </form>
+{{/if}}
