@@ -1,0 +1,18 @@
+<h1>{{ author }}</h1>
+<p> Welcome to {{ title}}</p>
+
+{{# if isMaso}}
+<p>maso is true</p>
+{{ else }}
+<p> maso is false</p>
+{{/if}}
+
+{{# each names }}
+<span> {{this}} - </span>
+{{/each}}
+
+
+{{# each names as |value key| }}
+<p> {{key}} : {{ value }} </p>
+{{/each}}
+
