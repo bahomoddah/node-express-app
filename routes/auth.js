@@ -3,9 +3,9 @@ var router = express.Router();
 
 // get Signup page
 router.get('/signup', function(req, res, next) {
-    res.render('signup', { title: 'Validation', success: req.session.seccess , errors: req.session.errors});
+    res.render('signup', { title: 'Validation', success: req.session.success , errors: req.session.errors});
     req.session.errors = null
-    req.session.success = null
+    req.session.success = false
 });
 
 // SignUp POST
@@ -17,14 +17,13 @@ router.post('/register', function(req, res, next) {
     var errors = req.validationErrors();
     if (errors) {
         req.session.errors = errors
-        req.session.seccess = false
+        req.session.success = false
         res.redirect('/auth/signup')
     } else {
-        req.session.seccess = true
+        req.session.success = true
         res.redirect('/auth/signup')
-
+        // res.redirect('/')
     }
-    // res.redirect('/')
 })
 
 module.exports = router;
