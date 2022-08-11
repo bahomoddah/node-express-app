@@ -4,7 +4,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var hbs = require('express-handlebars');
-var expressValidator = require('express-validation')
+var expressValidator = require('express-validator')
 var expressSession = require('express-session')
 
 var indexRouter = require('./routes/index');
