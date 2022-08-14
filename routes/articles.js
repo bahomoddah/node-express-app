@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongo = require('mongodb').MongoClient;
+var objectId = require('mongodb').ObjectId;
 var assert = require('assert');
 
 const url = "mongodb://localhost:27017/myExpressDB"
@@ -12,7 +13,6 @@ router.get('/', function(req, res, next) {
 /* GET Articles Data*/
 router.get('/get', function(req, res, next) {
   var arr = []
-
     mongo.connect(url, (err, client) => {
         assert.equal(null, err);
         var db = client.db();
@@ -46,12 +46,28 @@ router.post('/add', function(req, res, next) {
             client.close();
         });
     })
-
     res.redirect('/articles')
 })
 
 // update Article
 router.post('/update', function(req, res, next) {
+    var article = {
+        title: req.body.title,
+        content: req.body.content,
+        author: req.body.author
+    };
+    var id = req.body.id
+
+    mongo.connect(url, (err, client) => {
+        assert.equal(null, err);
+        var db = client.db();
+        db.collection('articles').updateOne({ "_id": objectId(id) }, {$set: article} , (err, result) => {
+            assert.equal(null, err);
+            console.log("Article Updated");
+            client.close();
+        })
+    })
+    res.redirect('/articles')
 })
 
 // Delete An article
