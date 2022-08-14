@@ -12,7 +12,6 @@ router.get('/', (req, res, next) =>  {
         assert.equal(null, err);
         var db = client.db();
         var articlesData = db.collection('articles').find();
-        console.log('articles', articlesData);
         articlesData.forEach((doc, err) => {
             assert.equal(null, err);
             arr.push(doc)
@@ -31,7 +30,6 @@ router.get('/get', (req, res, next) =>  {
         assert.equal(null, err);
         var db = client.db();
         var articlesData = db.collection('articles').find();
-        console.log('articles', articlesData);
         articlesData.forEach((doc, err) => {
             assert.equal(null, err);
             arr.push(doc)
