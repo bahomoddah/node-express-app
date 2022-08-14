@@ -25,6 +25,9 @@ body {
     margin-right: 0;
   }
   
+  h2 {
+    color: #2ecc71;
+  }
   section h3 {
     border-bottom: 1px solid black;
     padding-bottom: 5px;
