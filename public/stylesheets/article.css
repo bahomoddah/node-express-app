@@ -7,22 +7,21 @@ body {
     color: #00B7FF;
   }
   
+  .artciles-box {
+    display: flex;
+    flex-basis: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
   section {
-    float: left;
-    background: #bdc3c7;
+    /* float: left; */
+    background: #fff;
     padding: 10px;
-    margin: 30px;
-    width: 300px;
-    box-shadow: 3px 3px 1px #34495e;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0px 1px 10px 0px rgba(0,0,0, 0.4);
     min-height: 400px;
-  }
-  
-  section:first-of-type {
-    margin-left: 0;
-  }
-  
-  section:last-of-type {
-    margin-right: 0;
+    border-radius: 12px;
   }
   
   h2 {
@@ -33,19 +32,19 @@ body {
     padding-bottom: 5px;
   }
   
-  .insert {
+  .insert button {
     background: #2ecc71;
   }
   
-  .get {
+  .get button {
     background: #ecf0f1;
   }
   
-  .update {
+  .update button {
     background: #3498db;
   }
   
-  .delete {
+  .delete button {
     background: #e74c3c;
   }
   
@@ -64,7 +63,7 @@ body {
     margin-top: 10px;
     border: none;
     box-shadow: 1px 1px 1px #34495e;
-    border-radius: 0;
+    border-radius: 4px;
     background: #ecf0f1;
     cursor: pointer;
   }
