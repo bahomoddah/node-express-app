@@ -1,0 +1,69 @@
+<h1>customers with Mongoose</h1>
+<div class="artciles-box">
+<section class="insert">
+    <h3>Add customer</h3>
+    <form action="/customers/add" method="post">
+        <div class="input">
+            <label for="full_name">full_name</label>
+            <input type="text" id="full_name" name="full_name">
+        </div>
+        <div class="input">
+            <label for="city">city</label>
+            <input type="text" id="city" name="city">
+        </div>
+        <div class="input">
+            <label for="job">job</label>
+            <input type="text" id="job" name="job">
+        </div>
+        <button type="submit">ADD</button>
+    </form>
+</section>
+<section class="get">
+    <h3>Get customers</h3>
+    <a href="/customers">LOAD DATA</a>
+    <div>
+        {{# each customers }}
+        <article class="item">
+            <div>full_name: {{ this.full_name }}</div>
+            <div>city: {{ this.city }}</div>
+            <div>job: {{ this.job }}</div>
+            <div>ID: {{ this._id }}</div>
+        </article>
+        {{/each}}
+    </div>
+</section>
+<section class="update">
+    <h3>Update customer</h3>
+    <form action="/customers/update" method="post">
+        <div class="input">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <div class="input">
+            <label for="full_name">full_name</label>
+            <input type="text" id="full_name" name="full_name">
+        </div>
+        <div class="input">
+            <label for="city">city</label>
+            <input type="text" id="city" name="city">
+        </div>
+        <div class="input">
+            <label for="job">job</label>
+            <input type="text" id="job" name="job">
+        </div>
+        <button type="submit">UPDATE</button>
+    </form>
+</section>
+</section>
+<section class="delete">
+    <h3>Delete customer</h3>
+    <form action="/customers/delete" method="post">
+        <div class="input">
+            <label for="id">ID</label>
+            <input type="text" id="id" name="id">
+        </div>
+        <button type="submit">DELETE</button>
+    </form>
+</section>
+
+</div>
