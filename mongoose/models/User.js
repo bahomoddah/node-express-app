@@ -23,10 +23,13 @@ const userSchema = new mongoose.Schema({
         default: 25
     },
     createAt: {
-        type: Date
+        type: Date,
+        immutable: true,
+        default: () => new Date()
     },
     updateAt: {
-        type: Date
+        type: Date,
+        default: () => new Date()
     },
     address: addressSchema,
     homeTwon:  {
