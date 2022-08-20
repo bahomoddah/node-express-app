@@ -42,13 +42,20 @@ async function runCode() {
 
 
         /* ############## use builtin prorties in Schema  ################################ */
-        const user = await User.create({
-            firstName: "Ahmed",
-            email: "a@a.com",
-            lastName: "Saeed",
-            age: 10
-        })
-        console.log(user);
+        // const user = await User.create({
+        //     firstName: "Ahmed",
+        //     email: "a@a.com",
+        //     lastName: "Saeed",
+        //     age: 10
+        // })
+        
+        /* ############## using find method to get data from mongoDB  ################################ */
+        const userById = await User.findById("6301049f832d9be768143dbf")
+        const userByObject = await User.find({ firstName: "Mohammed"})
+        const userexists = await User.exists({ firstName: "Mohammed"})
+        console.log("userById", userById);
+        console.log("userByObject",userByObject);
+        console.log("userexists",userexists);
 
     } catch (error) {
         console.error(error.message);
