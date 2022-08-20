@@ -52,7 +52,7 @@ userSchema.methods.sayHi = function () {
 }
 
 // added custom functions to User Model
-userSchema.statices.findByEmail = function (email) {
+userSchema.statics.findByEmail = function (email) {
     return this.find({email: new RegExp(email, 'i') })
 }
 
@@ -64,6 +64,20 @@ userSchema.query.byEmail = function (email) {
 // Added custom key value without put it in DB
 userSchema.virtual("fullName").get(function () {
     return `${this.firstName} ${this.lastName}`
+})
+
+// Middleware before save model function
+userSchema.pre('save', function (next) {
+    this.updateAt = new Date()
+    if (this.age > 60) {
+        throw Error("age must be less then 60 ")
+    }
+    next()
+})
+// Middleware after save model function
+userSchema.post('save', function (doc, next) {
+    doc.sayHi()
+    // next()
 })
 
 const User = mongoose.model("User", userSchema)

@@ -106,18 +106,30 @@ async function runCode() {
 
         /* ############## Using custom (methods-functions-Queries) for Model  ################################ */
         
-        const userMethods = await User.where("age").equals(33)
-        userMethods.sayHi()
-        const userStatices = await User.findByEmail("maso@maso.com")
-        console.log("userStatices", userStatices);
-        const userQueries = await User.find().byEmail("maso@maso.com")
-        console.log("userQueries", userQueries);
+        // const userMethods = await User.findById("63010c188fef46e7509d238c")
+        // console.log("userMethods", userMethods);
+        // userMethods.sayHi()
+        // const userStatices = await User.findByEmail("maso@maso.com")
+        // console.log("userStatices", userStatices);
+        // const userQueries = await User.find().byEmail("maso@maso.com")
+        // console.log("userQueries", userQueries);
 
         /* ############## added virtual property to Model not to DB  ################################ */
         
-        const user = await User.where("age").equals(33)
-        console.log("user", user);
-        console.log("user", user.fullName);
+        // const userVirtual = await User.where("age").equals(19)
+        // console.log("user", userVirtual);
+        // console.log("fullName", userVirtual[0].fullName);
+        
+
+        /* ############## using Meddleware with model functions  ################################ */
+        
+        const oldUSer = await User.findById("63010c188fef46e7509d238c")
+        oldUSer.lastName = "Ahmed"
+        console.log("b user", oldUSer);
+        oldUSer.save()
+        console.log("a user", oldUSer);
+        oldUSer.sayHi()
+        console.log("fullName", oldUSer.fullName);
     } catch (error) {
         console.error(error.message);
     }
