@@ -58,12 +58,38 @@ async function runCode() {
         // console.log("userByObject",userByObject);
         // console.log("userexists",userexists);
 
-        /* ############## using find method to get data from mongoDB  ################################ */
-        const userDeleted = await User.deleteOne({ firstName: "Ahmed"})
-        // const userDeleted = await User.deleteMany({ firstName: "Mohammed"})
-        const userIdDeleted = await User.findByIdAndDelete("6301049f832d9be768143dbf")
-        console.log("userDeleted", userDeleted);
-        console.log("userIdDeleted", userIdDeleted);
+        /* ############## Deleting data from mongoDB  ################################ */
+        // const userDeleted = await User.deleteOne({ firstName: "Ahmed"})
+        // // const userDeleted = await User.deleteMany({ firstName: "Mohammed"})
+        // const userIdDeleted = await User.findByIdAndDelete("6301049f832d9be768143dbf")
+        // console.log("userDeleted", userDeleted);
+        // console.log("userIdDeleted", userIdDeleted);
+
+        /* ############## Using Queries (where..) filter data  ################################ */
+        await User.create({
+            firstName: "kamal",
+            email: "a@aa.com",
+            lastName: "Saeed",
+            age: 19
+        })
+        await User.create({
+            firstName: "fahed",
+            email: "f@aa.com",
+            lastName: "Saeed",
+            age: 32
+        })
+        await User.create({
+            firstName: "Ahmed",
+            email: "Ahmed@Ahmed.com",
+            lastName: "Saeed",
+            age: 20
+        })
+        const user3 = await User.where("firstName").equals("Ahmed").limit(3)
+        const user = await User.where("firstName").equals("Ahmed").where("age").gt(18).lt(21)
+        const userAges = await User.where("age").gt(18).lt(21).select("age")
+        console.log("user", user);
+        console.log("user3", user3);
+        console.log("userAges", userAges);
 
     } catch (error) {
         console.error(error.message);
