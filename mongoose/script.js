@@ -50,12 +50,20 @@ async function runCode() {
         // })
         
         /* ############## using find method to get data from mongoDB  ################################ */
-        const userById = await User.findById("6301049f832d9be768143dbf")
-        const userByObject = await User.find({ firstName: "Mohammed"})
-        const userexists = await User.exists({ firstName: "Mohammed"})
-        console.log("userById", userById);
-        console.log("userByObject",userByObject);
-        console.log("userexists",userexists);
+        // const userById = await User.findById("6301049f832d9be768143dbf")
+        // const userByObject = await User.find({ firstName: "Mohammed"})
+        // const userexists = await User.exists({ firstName: "Mohammed"})
+        // const userexists = await User.findOne({ firstName: "Ahmed"})
+        // console.log("userById", userById);
+        // console.log("userByObject",userByObject);
+        // console.log("userexists",userexists);
+
+        /* ############## using find method to get data from mongoDB  ################################ */
+        const userDeleted = await User.deleteOne({ firstName: "Ahmed"})
+        // const userDeleted = await User.deleteMany({ firstName: "Mohammed"})
+        const userIdDeleted = await User.findByIdAndDelete("6301049f832d9be768143dbf")
+        console.log("userDeleted", userDeleted);
+        console.log("userIdDeleted", userIdDeleted);
 
     } catch (error) {
         console.error(error.message);
