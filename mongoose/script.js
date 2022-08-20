@@ -112,6 +112,12 @@ async function runCode() {
         console.log("userStatices", userStatices);
         const userQueries = await User.find().byEmail("maso@maso.com")
         console.log("userQueries", userQueries);
+
+        /* ############## added virtual property to Model not to DB  ################################ */
+        
+        const user = await User.where("age").equals(33)
+        console.log("user", user);
+        console.log("user", user.fullName);
     } catch (error) {
         console.error(error.message);
     }

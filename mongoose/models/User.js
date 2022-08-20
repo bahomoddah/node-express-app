@@ -61,5 +61,10 @@ userSchema.query.byEmail = function (email) {
     return this.where({email: new RegExp(email, 'i') })
 }
 
+// Added custom key value without put it in DB
+userSchema.virtual("fullName").get(function () {
+    return `${this.firstName} ${this.lastName}`
+})
+
 const User = mongoose.model("User", userSchema)
 module.exports = User
