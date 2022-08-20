@@ -18,9 +18,12 @@ const userSchema = new mongoose.Schema({
     },
     age: {
         type: Number,
-        min: 13,
         max: 77,
-        default: 25
+        default: 25,
+        validate: {
+            validator: v => v >= 13,
+            message: props => `You Are Younger your age is ${props.value}`
+        }
     },
     createAt: {
         type: Date,
