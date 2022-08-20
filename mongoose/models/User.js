@@ -46,5 +46,20 @@ const userSchema = new mongoose.Schema({
     }
 })
 
+// added custom methods to User model
+userSchema.methods.sayHi = function () {
+    console.log(`Hi I'm ${this.firstName}, my Age is ${this.age}`);
+}
+
+// added custom functions to User Model
+userSchema.statices.findByEmail = function (email) {
+    return this.find({email: new RegExp(email, 'i') })
+}
+
+// added custom Queries to filter User Model like where()
+userSchema.query.byEmail = function (email) {
+    return this.where({email: new RegExp(email, 'i') })
+}
+
 const User = mongoose.model("User", userSchema)
 module.exports = User

@@ -92,17 +92,26 @@ async function runCode() {
         // console.log("userAges", userAges);
 
         /* ############## Using Queries to show all related objectId feilds data  ################################ */
-        await User.create({
-            firstName: "maso",
-            email: "a@aa.com",
-            age: 33,
-            bestFriend: "6300f4d7cd1b5ed9f9690545"
-        })
+        // await User.create({
+        //     firstName: "maso",
+        //     email: "a@aa.com",
+        //     age: 33,
+        //     bestFriend: "6300f4d7cd1b5ed9f9690545"
+        // })
 
-        const userWithId = await User.where("age").equals(33)
-        const userWithAllData = await User.where("age").equals(33).populate("bestFriend")
-        console.log("userWithId", userWithId);
-        console.log("userWithAllData", userWithAllData);
+        // const userWithId = await User.where("age").equals(33)
+        // const userWithAllData = await User.where("age").equals(33).populate("bestFriend")
+        // console.log("userWithId", userWithId);
+        // console.log("userWithAllData", userWithAllData);
+
+        /* ############## Using custom (methods-functions-Queries) for Model  ################################ */
+        
+        const userMethods = await User.where("age").equals(33)
+        userMethods.sayHi()
+        const userStatices = await User.findByEmail("maso@maso.com")
+        console.log("userStatices", userStatices);
+        const userQueries = await User.find().byEmail("maso@maso.com")
+        console.log("userQueries", userQueries);
     } catch (error) {
         console.error(error.message);
     }
