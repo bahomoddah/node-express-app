@@ -39,7 +39,11 @@ const userSchema = new mongoose.Schema({
         country: String,
         city: String
     },
-    hoppies: []
+    hoppies: [],
+    bestFriend: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "User"
+    }
 })
 
 const User = mongoose.model("User", userSchema)

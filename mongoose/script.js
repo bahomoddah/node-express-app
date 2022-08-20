@@ -66,31 +66,43 @@ async function runCode() {
         // console.log("userIdDeleted", userIdDeleted);
 
         /* ############## Using Queries (where..) filter data  ################################ */
-        await User.create({
-            firstName: "kamal",
-            email: "a@aa.com",
-            lastName: "Saeed",
-            age: 19
-        })
-        await User.create({
-            firstName: "fahed",
-            email: "f@aa.com",
-            lastName: "Saeed",
-            age: 32
-        })
-        await User.create({
-            firstName: "Ahmed",
-            email: "Ahmed@Ahmed.com",
-            lastName: "Saeed",
-            age: 20
-        })
-        const user3 = await User.where("firstName").equals("Ahmed").limit(3)
-        const user = await User.where("firstName").equals("Ahmed").where("age").gt(18).lt(21)
-        const userAges = await User.where("age").gt(18).lt(21).select("age")
-        console.log("user", user);
-        console.log("user3", user3);
-        console.log("userAges", userAges);
+        // await User.create({
+        //     firstName: "kamal",
+        //     email: "a@aa.com",
+        //     lastName: "Saeed",
+        //     age: 19
+        // })
+        // await User.create({
+        //     firstName: "fahed",
+        //     email: "f@aa.com",
+        //     lastName: "Saeed",
+        //     age: 32
+        // })
+        // await User.create({
+        //     firstName: "Ahmed",
+        //     email: "Ahmed@Ahmed.com",
+        //     lastName: "Saeed",
+        //     age: 20
+        // })
+        // const user3 = await User.where("firstName").equals("Ahmed").limit(3)
+        // const user = await User.where("firstName").equals("Ahmed").where("age").gt(18).lt(21)
+        // const userAges = await User.where("age").gt(18).lt(21).select("age")
+        // console.log("user", user);
+        // console.log("user3", user3);
+        // console.log("userAges", userAges);
 
+        /* ############## Using Queries to show all related objectId feilds data  ################################ */
+        await User.create({
+            firstName: "maso",
+            email: "a@aa.com",
+            age: 33,
+            bestFriend: "6300f4d7cd1b5ed9f9690545"
+        })
+
+        const userWithId = await User.where("age").equals(33)
+        const userWithAllData = await User.where("age").equals(33).populate("bestFriend")
+        console.log("userWithId", userWithId);
+        console.log("userWithAllData", userWithAllData);
     } catch (error) {
         console.error(error.message);
     }
