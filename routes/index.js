@@ -21,4 +21,9 @@ router.post('/cars/add', function(req, res, next) {
   res.redirect('/car/' + id)
 })
 
+/* GET maso page. */
+router.get('/maso', function(req, res, next) {
+  res.render('maso');
+});
+
 module.exports = router;
