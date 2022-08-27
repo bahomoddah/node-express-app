@@ -2,6 +2,11 @@ var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/myExpressDB');
+
+/* ##################
+// Express with MONGODB using Mongoose
+################## */
+
 var Schema = mongoose.Schema;
 
 var customerDataSchema = new Schema({

@@ -3,6 +3,10 @@ var router = express.Router();
 var db = require('monk')('localhost:27017/myExpressDB');
 var postsData = db.get('posts');
 
+/* ##################
+// Express with MONGODB using Monk
+################## */
+
 /* GET posts Page */
 router.get('/', (req, res, next) =>  {
     postsData.find({})

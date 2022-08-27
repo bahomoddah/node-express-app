@@ -5,6 +5,11 @@ var objectId = require('mongodb').ObjectId;
 var assert = require('assert');
 
 const url = "mongodb://localhost:27017/myExpressDB"
+
+/* ##################
+// Express with MONGODB using MongoClient
+################## */
+
 /* GET Articles Page */
 router.get('/', (req, res, next) =>  {
     var arr = []

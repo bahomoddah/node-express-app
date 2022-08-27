@@ -1,16 +1,15 @@
-var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var morgan = require('morgan');
 var hbs = require('express-handlebars');
 var handlebars = require('handlebars');
 var expressValidator = require('express-validator')
 var expressSession = require('express-session')
+var createError = require('http-errors');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 var authRouter = require('./routes/auth');
 var articlesRouter = require('./routes/articles');
 var postsRouter = require('./routes/posts');
@@ -27,7 +26,7 @@ handlebars: allowInsecurePrototypeAccess(handlebars),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(expressValidator());
@@ -36,8 +35,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressSession({secret: 'maso', saveUninitialized: false, resave: false}))
 
 app.use('/', indexRouter);
-app.use('/test', indexRouter);
-app.use('/users', usersRouter);
 app.use('/auth', authRouter);
 app.use('/articles', articlesRouter)
 app.use('/posts', postsRouter)

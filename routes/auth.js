@@ -1,6 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
+/* ##################
+// Express with express-validator and express-session
+################## */
+
 // get Signup page
 router.get('/signup', function(req, res, next) {
     res.render('signup', { title: 'Validation', success: req.session.success , errors: req.session.errors});
