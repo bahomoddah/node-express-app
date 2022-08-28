@@ -1,4 +1,4 @@
-# node-express-app
+# node-express-mongoDB
 This App to understand express (Node.js Framework ) and mongoDB
 by using different ways to connect with Mongo DataBase
 
